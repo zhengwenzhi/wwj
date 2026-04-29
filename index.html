@@ -112,27 +112,25 @@
         </div>
     </div>
 
-    <audio id="audioPlayer" autoplay loop preload="auto" style="display:none;" muted>
+    <audio id="audioPlayer" preload="auto" style="display:none;">
         <source src="1111.mp3" type="audio/mpeg">
-    
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('audioPlayer');
-            audio.volume = 0.1;
-            audio.play().then(function() {
-                console.log('音乐播放成功');
-            }).catch(function(e) {
-                console.log('自动播放被阻止，等待用户交互');
-            });
+        var audio = document.getElementById('audioPlayer');
+        var container = document.querySelector('.container');
+        var hasPlayed = false;
+
+        audio.volume = 0.1;
+
+        container.addEventListener('click', function() {
+            if (!hasPlayed) {
+                audio.play();
+                hasPlayed = true;
+            }
         });
 
-        document.addEventListener('click', function() {
-            var audio = document.getElementById('audioPlayer');
-            if (audio.muted) {
-                audio.muted = false;
-                audio.play();
-            }
+        audio.addEventListener('ended', function() {
+            audio.play();
         });
     </script>
 </body>
