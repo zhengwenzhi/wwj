@@ -84,7 +84,7 @@
         </div>
 
         <div class="letter-content">
-后来得知你确定要出国时 我真心替你高兴 那是对你未来更好的选择 可高兴过后 铺天盖地的难过和无力感就把我淹没了 我知道，隔着半个地球的距离 我们见面的机会只会越来越少 因为我知道上大学的生活费恐怕不足我见你一面 后面恐怕没有见面机会 我当时在想放手会是最好的选择 我尝试开始不和你联系 让你淡出我的生活 可是我发现我做不到 我还是会默默的关注着你的生活动态
+后来得知你确定要出国时 我真心替你高兴 那是对你未来更好的选择 可高兴过后 铺天盖地的难过和无力感就把我淹没了 我知道，隔着半个地球的距离，我们见面的机会只会越来越少 因为我知道上大学的生活费恐怕不足我见你一面 后面恐怕没有见面机会 我当时在想放手会是最好的选择 我尝试开始不和你联系 让你淡出我的生活 可是我发现我做不到 我还是会默默的关注着你的生活动态
         </div>
 
         <div class="letter-content">
@@ -120,26 +120,31 @@
         </div>
 
         <div class="letter-content">
-这封信我准备了很久 写的时候还是忍不住流泪 本想着5月20号发给你 但现在我一秒钟都不想再等了 以前我总是想太多，我的懦弱让我一次又一次地错过 我怕和你说完再也没有机会和你见面 但我更无法接受我们的故事没有正式开始就结束 就算最后没有在一起 我也不在乎 我只想和你谈一场最简单普通恋爱 哪怕只有见面时的一天也行 我真的 好想好想你啊
+这封信我准备了很久 写的时候还是忍不住流泪 本想着5月20号发给你 但现在我一秒钟都不想再等了 以前我总是想太多，我的懦弱让我一次又一次地错过 我怕和你说完再也没有机会和你见面 但我更无法接受我们的故事没有正式开始就结束 就算最后没有在一起 我也不在乎 我只想和你谈一场最简单普通恋爱 哪怕只有见面时的一天也行
+        </div>
+
+        <div class="letter-content">
+我真的 好想好想你啊
         </div>
     </div>
 
     <audio id="audioPlayer" loop preload="auto" style="display:none;">
         <source src="1111.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         var audio = document.getElementById('audioPlayer');
-        var container = document.querySelector('.container');
-        var hasPlayed = false;
-
         audio.volume = 0.25;
 
-        container.addEventListener('click', function() {
-            if (!hasPlayed) {
-                audio.play();
-                hasPlayed = true;
-            }
-        });
+        function playAudio() {
+            audio.play().catch(function(error) {
+                console.log('播放需要用户交互');
+            });
+        }
+
+        document.addEventListener('click', playAudio);
+        document.addEventListener('touchstart', playAudio);
+        document.addEventListener('scroll', playAudio, { passive: true });
     </script>
 </body>
 </html>
